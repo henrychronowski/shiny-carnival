@@ -30,7 +30,7 @@ public class PhysicsObject2D : MonoBehaviour
 
 	void clearAccumulatedForces()
 	{
-		mAccumulatedForces = (0.0f, 0.0f);
+		mAccumulatedForces = new Vector2(0.0f, 0.0f);
 	}
 
 	void Integrate( double dt )

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Particle2D : PhysicsObject2D
 {
-    
+
 }
