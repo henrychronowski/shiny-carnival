@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class PhysicsObject2D : MonoBehaviour
 {
+	[SerializeField]
 	protected Vector2 mPos;
+	[SerializeField]
 	protected Vector2 mVel;
+	[SerializeField]
 	protected Vector2 mAcc;
 	protected Vector2 mAccumulatedForces;
+	[SerializeField]
 	protected float mFacing;
+	[SerializeField]
 	protected float mRotVel;
+	[SerializeField]
 	protected float mRotAcc;
+	[SerializeField]
 	protected float mDampingConstant;
+	[SerializeField]
 	protected float mInverseMass;
+	[SerializeField]
 	protected bool mShouldIgnoreForces;
 
     void Start()
@@ -21,12 +30,15 @@ public class PhysicsObject2D : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        
+
 		// Call integrator/pass data (maybe a data struct would actually be usefull)
 		// Or actually having an integrate function here that the integrator calls, conversely
-    }
+
+		Integrate(Time.deltaTime);
+		transform.SetPositionAndRotation(mPos, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+	}
 
 	void clearAccumulatedForces()
 	{

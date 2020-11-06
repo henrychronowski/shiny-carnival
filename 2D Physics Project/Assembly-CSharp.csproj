@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Components\DestroyOnExit.cs" />
     <Compile Include="Assets\Scripts\ContactResolver.cs" />
     <Compile Include="Assets\Scripts\ForceGenerator2D.cs" />
     <Compile Include="Assets\Scripts\ForceManager.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Scripts\Particle2D.cs" />
     <Compile Include="Assets\Scripts\Particle2DContact.cs" />
     <Compile Include="Assets\Scripts\Particle2DLink.cs" />
+    <Compile Include="Assets\Scripts\Physics Framework\Extensions.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Integrator.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Vector2D.cs" />
     <Compile Include="Assets\Scripts\PhysicsObject2D.cs" />
