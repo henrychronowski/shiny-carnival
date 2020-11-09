@@ -143,8 +143,14 @@ public class GameManager : MonoBehaviour
 					proj2.gameObject.AddComponent<DestroyOnExit>();
 					
 					SpringForceGenerator springForceGenerator = new SpringForceGenerator(proj, proj2, 1.0f, 50.0f, true);
-					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerator = springForceGenerator;
+					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerators.Add(springForceGenerator);
 					mForceManager.AddForceGenerator(springForceGenerator);
+					BouyancyForceGenerator bGenerator = new BouyancyForceGenerator(true, proj, -6, 100, 0);
+					mForceManager.AddForceGenerator(bGenerator);
+					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerators.Add(bGenerator);
+					bGenerator = new BouyancyForceGenerator(true, proj2, -6, 100, 0);
+					mForceManager.AddForceGenerator(bGenerator);
+					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerators.Add(bGenerator);
 				}
 				break;
 			case WeaponType.ROD:
@@ -160,16 +166,24 @@ public class GameManager : MonoBehaviour
                     mPhysicsObjects.Add(proj);
 
                     PhysicsObject2D proj2;
-					proj2 = Instantiate(projectile, spawnPoint.position + new Vector3(5.0f, 0.0f), spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+					proj2 = Instantiate(projectile, spawnPoint.position + new Vector3(2.5f, 0.0f), spawnPoint.rotation).GetComponent<PhysicsObject2D>();
 					proj2.SetVel(angle * speed);
 					proj2.SetAcc(gravity);
 					proj2.SetInverseMass(1.0f);
 					proj2.SetDamping(0.99f);
                     mPhysicsObjects.Add(proj2);
+					proj2.gameObject.AddComponent<DestroyOnExit>();
 
 					Particle2DLink link = new ParticleRod(proj, proj2, 5.0f);
 					AddParticleLink(link);
-                }
+
+					BouyancyForceGenerator bGenerator = new BouyancyForceGenerator(true, proj, -6, 100, 0);
+					mForceManager.AddForceGenerator(bGenerator);
+					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerators.Add(bGenerator);
+					bGenerator = new BouyancyForceGenerator(true, proj2, -6, 100, 0);
+					mForceManager.AddForceGenerator(bGenerator);
+					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerators.Add(bGenerator);
+				}
 				break;
         }
     }
@@ -188,4 +202,9 @@ public class GameManager : MonoBehaviour
     {
 		mParticleLinks.Remove(link);
     }
+
+	private void buoyancy()
+	{
+
+	}
 }

@@ -76,8 +76,11 @@ public class BouyancyForceGenerator : ForceGenerator2D
         mDensity = density;
     }
 
-    public new void UpdateForce()
+    public override void UpdateForce()
     {
+		if (mObj == null)
+			return;
+
         float currentDepth = mObj.transform.position.y;
         Vector2 bouyancyForce = Vector2.zero;
 
@@ -90,7 +93,7 @@ public class BouyancyForceGenerator : ForceGenerator2D
             }
             else
             {
-                bouyancyForce.y = mDensity * mVolume * (currentDepth - mMaxDepth - mWaterHeight) / (2 * mMaxDepth);
+                bouyancyForce.y = mDensity * mVolume * (-(currentDepth - mMaxDepth - mWaterHeight)) / (2 * mMaxDepth);
                 mObj.AddForce(bouyancyForce);
             }
         }
