@@ -65,4 +65,9 @@ public class PhysicsObject2D : MonoBehaviour
     {
 		mAccumulatedForces += force;
     }
+	
+	public void SetVel(Vector2 vel)
+	{
+		mVel = vel;
+	}
 }

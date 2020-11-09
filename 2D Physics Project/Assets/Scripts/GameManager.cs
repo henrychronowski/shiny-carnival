@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	[Tooltip("Ensure Top Left has ample vertical room")]
+	[SerializeField]
+	private Vector2 topLeft, bottomRight;
 	public Integrator mIntegrator;
     public List<PhysicsObject2D> mPhysicsObjects;
 
@@ -18,20 +21,21 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 		mIntegrator.Integrate(Time.deltaTime);
+		CheckBounds();
     }
 
-	//void CheckBounds()
-	//{
-	//	// get root objects in scene
-	//	List<GameObject> rootObjects = new List<GameObject>();
-	//	Scene scene = SceneManager.GetActiveScene();
-	//	scene.GetRootGameObjects(rootObjects);
+	void CheckBounds()
+	{
+		// get root objects in scene
+		List<GameObject> rootObjects = new List<GameObject>();
+		Scene scene = SceneManager.GetActiveScene();
+		scene.GetRootGameObjects(rootObjects);
 
-	//	// iterate root objects and do something
-	//	for (int i = 0; i < rootObjects.Count; ++i)
-	//	{
-	//		GameObject gameObject = rootObjects[i];
-			
-	//	}
-	//}
+		foreach ( GameObject elemnt in rootObjects)
+		{
+			if (elemnt.transform.position.x < topLeft.x || elemnt.transform.position.x > bottomRight.x ||
+				elemnt.transform.position.y > topLeft.y || elemnt.transform.position.y < bottomRight.y)
+				Destroy(elemnt);
+		}
+	}
 }
