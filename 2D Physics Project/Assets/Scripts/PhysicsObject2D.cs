@@ -70,4 +70,29 @@ public class PhysicsObject2D : MonoBehaviour
 	{
 		mVel = vel;
 	}
+
+	public Vector2 GetVel()
+	{
+		return mVel;
+	}
+
+	public Vector2 GetAcc()
+	{
+		return mAcc;
+	}
+
+	public float GetIMass()
+	{
+		return mInverseMass;
+	}
+
+	public Vector2 GetPos()
+	{
+		return mPos;
+	}
+
+	public void SetPos(Vector2 pos)
+	{
+		mPos = pos;
+	}
 }
