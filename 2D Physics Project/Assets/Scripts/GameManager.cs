@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
 			if (element.transform.position.x < topLeft.x || element.transform.position.x > bottomRight.x ||
 				element.transform.position.y > topLeft.y || element.transform.position.y < bottomRight.y)
             {
-				Destroy(element);
+				if(element.layer != 5)
+					Destroy(element);
 			}
 		}
 	}
