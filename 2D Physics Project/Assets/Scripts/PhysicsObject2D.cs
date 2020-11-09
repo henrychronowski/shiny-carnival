@@ -36,11 +36,11 @@ public class PhysicsObject2D : MonoBehaviour
 		// Call integrator/pass data (maybe a data struct would actually be usefull)
 		// Or actually having an integrate function here that the integrator calls, conversely
 
-		Integrate(Time.deltaTime);
+		//Integrate(Time.deltaTime);
 		transform.SetPositionAndRotation(mPos, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 	}
 
-	void clearAccumulatedForces()
+	void ClearAccumulatedForces()
 	{
 		mAccumulatedForces = new Vector2(0.0f, 0.0f);
 	}
@@ -59,6 +59,8 @@ public class PhysicsObject2D : MonoBehaviour
 		mVel += resultingAcc * (float)dt;
 		float damping = Mathf.Pow(mDampingConstant, (float)dt);
 		mVel *= damping;
+
+		ClearAccumulatedForces();
 	}
 
 	public void AddForce(Vector2 force)
@@ -70,4 +72,19 @@ public class PhysicsObject2D : MonoBehaviour
 	{
 		mVel = vel;
 	}
+
+	public void SetAcc(Vector2 acc)
+    {
+		mAcc = acc;
+    }
+
+	public void SetInverseMass(float mass)
+    {
+		mInverseMass = 1.0f / mass;
+    }
+
+	public void SetDamping(float damping)
+    {
+		mDampingConstant = damping;
+    }
 }

@@ -12,9 +12,14 @@ public class ForceGenerator2D
         mShouldEffectAll = effectAll;
     }
 
-    public void UpdateForce()
+    public virtual void UpdateForce()
     {
 
+    }
+
+    public bool EffectAll()
+    {
+        return mShouldEffectAll;
     }
 }
 
@@ -32,8 +37,11 @@ public class SpringForceGenerator : ForceGenerator2D
         mRestLength = restLength;
     }
 
-    public new void UpdateForce()
+    public override void UpdateForce()
     {
+        if (mObj1 == null || mObj2 == null)
+            return;
+
         Vector2 pos1 = mObj1.transform.position;
         Vector2 pos2 = mObj2.transform.position;
 

@@ -8,7 +8,8 @@ public class ForceManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        mForceGenerators = new List<ForceGenerator2D>();
+        mForceGenerators.Clear();
     }
 
     // Start is called before the first frame update
@@ -37,7 +38,10 @@ public class ForceManager : MonoBehaviour
     {
         foreach(ForceGenerator2D generator in mForceGenerators)
         {
-            generator.UpdateForce();
+            if (generator.EffectAll())
+            {
+                generator.UpdateForce();
+            }
         }
     }
 }

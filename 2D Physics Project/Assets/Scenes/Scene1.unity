@@ -220,7 +220,7 @@ MonoBehaviour:
   mProjectileSpawnLoc: {fileID: 2035422007}
   mProjectilePrefab: {fileID: 5961675341384942272, guid: e1fd081af2b4d494da030dd48c8aad22,
     type: 3}
-  mCurrentWeaponType: 0
+  mGameManager: {fileID: 0}
 --- !u!1 &687281688
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 1324765175}
   - component: {fileID: 1324765174}
   - component: {fileID: 1324765176}
+  - component: {fileID: 1324765177}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -407,7 +408,9 @@ MonoBehaviour:
   topLeft: {x: -10, y: 10}
   bottomRight: {x: 10, y: -6}
   mIntegrator: {fileID: 0}
+  mForceManager: {fileID: 0}
   mPhysicsObjects: []
+  mCurrentWeaponType: 0
 --- !u!4 &1324765175
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +438,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+--- !u!114 &1324765177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324765173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b505ce3d138154f965b9240b461811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1639250756
 GameObject:
   m_ObjectHideFlags: 0
