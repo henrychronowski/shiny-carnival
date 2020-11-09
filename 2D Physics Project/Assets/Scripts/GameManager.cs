@@ -5,6 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	private static GameManager instance = null;
+	public static GameManager Instance
+	{
+		get
+		{
+			if (instance == null)
+			{
+				instance = FindObjectOfType<GameManager>();
+				if (instance == null)
+				{
+					GameObject go = new GameObject();
+					go.name = "GameManager";
+					instance = go.AddComponent<GameManager>();
+					DontDestroyOnLoad(go);
+				}
+			}
+			return instance;
+		}
+	}
+
 	[Tooltip("Ensure Top Left has ample vertical room")]
 	[SerializeField]
 	private Vector2 topLeft, bottomRight;
@@ -21,8 +41,21 @@ public class GameManager : MonoBehaviour
         NUM_PROJECTILE_TYPES
     }
 
-    // Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	// Start is called before the first frame update
+	void Start()
     {
 		mIntegrator = GetComponent<Integrator>();
 		mForceManager = GetComponent<ForceManager>();
@@ -49,7 +82,8 @@ public class GameManager : MonoBehaviour
 			if (element.transform.position.x < topLeft.x || element.transform.position.x > bottomRight.x ||
 				element.transform.position.y > topLeft.y || element.transform.position.y < bottomRight.y)
             {
-				Destroy(element);
+				if(element.layer != 5)
+					Destroy(element);
 			}
 		}
 	}
