@@ -927,6 +927,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2f636c3c2eda0489b0836e6f10c297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 0.5
+  scoreManager: {fileID: 6173767763059316853}
+  xBoundOffset: 1
+  yBoundOffset: 1
 --- !u!4 &4427732309613889174
 Transform:
   m_ObjectHideFlags: 0
