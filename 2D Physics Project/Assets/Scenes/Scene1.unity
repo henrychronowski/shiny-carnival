@@ -220,6 +220,7 @@ MonoBehaviour:
   mProjectileSpawnLoc: {fileID: 2035422007}
   mProjectilePrefab: {fileID: 5961675341384942272, guid: e1fd081af2b4d494da030dd48c8aad22,
     type: 3}
+  mCurrentWeaponType: 0
 --- !u!1 &687281688
 GameObject:
   m_ObjectHideFlags: 0
