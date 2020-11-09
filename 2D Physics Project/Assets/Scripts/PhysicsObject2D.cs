@@ -26,7 +26,7 @@ public class PhysicsObject2D : MonoBehaviour
 
     void Start()
     {
-		// Get singleton integrator
+		mPos = transform.position;
     }
 
     // Update is called once per frame

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float mRotationRate = 5.0f;
+    public Transform mProjectileSpawnLoc;
+    public GameObject mProjectilePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +24,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            gameObject.transform.Rotate(0.0f, 0.0f, mRotationRate, Space.World);
+            transform.Rotate(0.0f, 0.0f, mRotationRate, Space.World);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            gameObject.transform.Rotate(0.0f, 0.0f, -mRotationRate, Space.World);
+            transform.Rotate(0.0f, 0.0f, -mRotationRate, Space.World);
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Instantiate(mProjectilePrefab, mProjectileSpawnLoc.position, mProjectileSpawnLoc.rotation);
+
         }
     }
 }
