@@ -60,4 +60,9 @@ public class PhysicsObject2D : MonoBehaviour
 		float damping = Mathf.Pow(mDampingConstant, (float)dt);
 		mVel *= damping;
 	}
+
+	public void SetVel(Vector2 vel)
+	{
+		mVel = vel;
+	}
 }

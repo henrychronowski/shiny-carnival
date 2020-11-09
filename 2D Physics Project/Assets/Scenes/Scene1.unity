@@ -218,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mRotationRate: 5
   mProjectileSpawnLoc: {fileID: 2035422007}
+  mProjectileSpawnRot: {fileID: 436075967}
   mProjectilePrefab: {fileID: 5961675341384942272, guid: e1fd081af2b4d494da030dd48c8aad22,
     type: 3}
 --- !u!1 &687281688

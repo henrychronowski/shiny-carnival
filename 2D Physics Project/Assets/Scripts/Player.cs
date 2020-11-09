@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     void CheckInput()
     {
+		float speed = 5;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             transform.Rotate(0.0f, 0.0f, mRotationRate, Space.World);
@@ -32,8 +34,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Instantiate(mProjectilePrefab, mProjectileSpawnLoc.position, mProjectileSpawnLoc.rotation);
-
+			Vector2 angle = new Vector2(mProjectileSpawnLoc.position.x - transform.position.x, mProjectileSpawnLoc.position.y - transform.position.y);
+            PhysicsObject2D proj = Instantiate(mProjectilePrefab, mProjectileSpawnLoc.position, mProjectileSpawnLoc.rotation).GetComponent<PhysicsObject2D>();
+			proj.SetVel(angle * speed);
         }
     }
 }
