@@ -68,6 +68,11 @@ public class PhysicsObject2D : MonoBehaviour
 		mAccumulatedForces += force;
     }
 	
+	public void SetPos(Vector2 pos)
+	{
+		mPos = pos;
+	}
+	
 	public void SetVel(Vector2 vel)
 	{
 		mVel = vel;
@@ -87,4 +92,25 @@ public class PhysicsObject2D : MonoBehaviour
     {
 		mDampingConstant = damping;
     }
+
+	public Vector2 GetVel()
+	{
+		return mVel;
+	}
+
+	public Vector2 GetAcc()
+	{
+		return mAcc;
+	}
+
+	public float GetIMass()
+	{
+		return mInverseMass;
+	}
+
+	public Vector2 GetPos()
+	{
+		return mPos;
+	}
+
 }
