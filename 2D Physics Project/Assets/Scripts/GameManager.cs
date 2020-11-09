@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
 	[Tooltip("Ensure Top Left has ample vertical room")]
 	[SerializeField]
-	private Vector2 topLeft, bottomRight;
+	public Vector2 topLeft, bottomRight;
 	public Integrator mIntegrator;
 	public ForceManager mForceManager;
     public List<PhysicsObject2D> mPhysicsObjects;

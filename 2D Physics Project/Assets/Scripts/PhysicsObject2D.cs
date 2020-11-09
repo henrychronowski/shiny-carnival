@@ -63,6 +63,11 @@ public class PhysicsObject2D : MonoBehaviour
 		ClearAccumulatedForces();
 	}
 
+	private void OnDestroy()
+	{
+		GameManager.Instance.mPhysicsObjects.Remove(this);
+	}
+
 	public void AddForce(Vector2 force)
     {
 		mAccumulatedForces += force;
