@@ -45,7 +45,7 @@ public class PhysicsObject2D : MonoBehaviour
 		mAccumulatedForces = new Vector2(0.0f, 0.0f);
 	}
 
-	void Integrate( double dt )
+	public void Integrate( double dt )
 	{
 		mPos += mVel * (float)dt;
 
