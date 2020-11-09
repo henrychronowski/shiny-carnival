@@ -61,6 +61,30 @@ public class BouyancyForceGenerator : ForceGenerator2D
 
     public BouyancyForceGenerator(bool effectAll, PhysicsObject2D obj, float depth, float volume, float waterHeight, float density = 0.5f) : base(effectAll)
     {
+        mObj = obj;
+        mMaxDepth = depth;
+        mVolume = volume;
+        mWaterHeight = waterHeight;
+        mDensity = density;
+    }
 
+    public new void UpdateForce()
+    {
+        float currentDepth = mObj.transform.position.y;
+        Vector2 bouyancyForce = Vector2.zero;
+
+        if(currentDepth <= mWaterHeight)
+        {
+            if(currentDepth <= mMaxDepth)
+            {
+                bouyancyForce.y = mDensity * mVolume;
+                mObj.AddForce(bouyancyForce);
+            }
+            else
+            {
+                bouyancyForce.y = mDensity * mVolume * (currentDepth - mMaxDepth - mWaterHeight) / (2 * mMaxDepth);
+                mObj.AddForce(bouyancyForce);
+            }
+        }
     }
 }
