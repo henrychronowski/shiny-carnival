@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	public Integrator mIntegrator;
 	public ForceManager mForceManager;
     public List<PhysicsObject2D> mPhysicsObjects;
+	public List<Particle2DContact> mParticleContacts;
 	public WeaponType mCurrentWeaponType;
 
 	public enum WeaponType
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
 	public void CreateProjectile(GameObject projectile, Transform spawnPoint, Transform playerPos)
     {
 		float speed = 0.0f;
-		Vector2 angle;
+		Vector2 angle = new Vector2(spawnPoint.position.x - playerPos.position.x, spawnPoint.position.y - playerPos.position.y);
 		Vector2 gravity;
 		PhysicsObject2D proj;
 
@@ -66,7 +67,6 @@ public class GameManager : MonoBehaviour
                 {
 					speed = 20.0f;
 					float speed2 = 15.0f;
-					angle = new Vector2(spawnPoint.position.x - playerPos.position.x, spawnPoint.position.y - playerPos.position.y);
 					gravity = new Vector2(0.0f, -6.0f);
 
 					float mass1, mass2;
@@ -93,6 +93,27 @@ public class GameManager : MonoBehaviour
 					proj2.gameObject.GetComponent<DestroyOnExit>().mForceGenerator = springForceGenerator;
 					mForceManager.AddForceGenerator(springForceGenerator);
 				}
+				break;
+			case WeaponType.ROD:
+                {
+					speed = 30.0f;
+					gravity = new Vector2(0.0f, -6.0f);
+
+					proj = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+                    proj.SetVel(angle * speed);
+                    proj.SetAcc(gravity);
+                    proj.SetInverseMass(1.0f);
+                    proj.SetDamping(0.99f);
+                    mPhysicsObjects.Add(proj);
+
+                    PhysicsObject2D proj2;
+					proj2 = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+					proj2.SetVel(angle * speed);
+					proj2.SetAcc(gravity);
+					proj2.SetInverseMass(1.0f);
+					proj2.SetDamping(0.99f);
+                    mPhysicsObjects.Add(proj2);
+                }
 				break;
         }
     }
