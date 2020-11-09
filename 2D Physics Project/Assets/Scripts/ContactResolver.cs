@@ -28,8 +28,6 @@ public class ContactResolver : MonoBehaviour
 	private int numIterations = 4;
 	private int iterationsUsed = 0;
 
-	private List<Particle2DContact> contacts;
-
 	private void Awake()
 	{
 		if(instance == null)
@@ -45,26 +43,17 @@ public class ContactResolver : MonoBehaviour
 
 	private void Update()
 	{
-		resolveContacts(Time.deltaTime);
+		
 	}
 
-	public void addContact(PhysicsObject2D lhs, PhysicsObject2D rhs, float restitutionCoefficient, Vector2 contactNormal, float penetration)
-	{
-		contacts.Add(new Particle2DContact(lhs, rhs, restitutionCoefficient, contactNormal, penetration, Vector2.zero, Vector2.zero));
-	}
 
-	public void setIterations(int numIterations)
+	public void SetIterations(int numIterations)
 	{
 		this.numIterations = numIterations;
 	}
 
-	private void resolveContacts(float dt)
+	public void ResolveContacts(List<Particle2DContact> contacts, float dt)
 	{
-		foreach( Particle2DContact contact in contacts)
-		{
-
-		}
-
 		if (contacts.Count == 0)
 			return;
 

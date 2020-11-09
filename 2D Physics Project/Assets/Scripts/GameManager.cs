@@ -31,8 +31,10 @@ public class GameManager : MonoBehaviour
 	public Integrator mIntegrator;
 	public ForceManager mForceManager;
     public List<PhysicsObject2D> mPhysicsObjects;
-	public List<Particle2DContact> mParticleContacts;
+	public List<Particle2DLink> mParticleLinks;
 	public WeaponType mCurrentWeaponType;
+	public List<Particle2DContact> mContacts;
+	public ContactResolver mResolver;
 
 	public enum WeaponType
     {
@@ -60,13 +62,30 @@ public class GameManager : MonoBehaviour
 		mIntegrator = GetComponent<Integrator>();
 		mForceManager = GetComponent<ForceManager>();
 		mCurrentWeaponType = WeaponType.SPRING;
+
+        mContacts = new List<Particle2DContact>();
+        mContacts.Clear();
+
+		mParticleLinks = new List<Particle2DLink>();
+		mParticleLinks.Clear();
+
+		mResolver = gameObject.AddComponent<ContactResolver>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-		mIntegrator.Integrate(Time.deltaTime);
+		mContacts.Clear();
+		foreach(var link in mParticleLinks)
+        {
+			link.CreateContacts(mContacts);
+        }
+
+		mResolver.SetIterations(10);
+		mResolver.ResolveContacts(mContacts, Time.deltaTime);
+
 		mForceManager.UpdateForceGenerators();
+		mIntegrator.Integrate(Time.deltaTime);
 		CheckBounds();
     }
 
@@ -141,12 +160,15 @@ public class GameManager : MonoBehaviour
                     mPhysicsObjects.Add(proj);
 
                     PhysicsObject2D proj2;
-					proj2 = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+					proj2 = Instantiate(projectile, spawnPoint.position + new Vector3(5.0f, 0.0f), spawnPoint.rotation).GetComponent<PhysicsObject2D>();
 					proj2.SetVel(angle * speed);
 					proj2.SetAcc(gravity);
 					proj2.SetInverseMass(1.0f);
 					proj2.SetDamping(0.99f);
                     mPhysicsObjects.Add(proj2);
+
+					Particle2DLink link = new ParticleRod(proj, proj2, 5.0f);
+					AddParticleLink(link);
                 }
 				break;
         }
@@ -155,5 +177,15 @@ public class GameManager : MonoBehaviour
 	public WeaponType GetWeaponType()
     {
 		return mCurrentWeaponType;
+    }
+
+	public void AddParticleLink(Particle2DLink link)
+    {
+		mParticleLinks.Add(link);
+    }
+
+	public void DeleteParticleLink(Particle2DLink link)
+    {
+		mParticleLinks.Remove(link);
     }
 }

@@ -51,11 +51,13 @@ public class ParticleRod : Particle2DLink
             penetration = (mLength - length) / 1000.0f;
 
             Particle2DContact contact = new Particle2DContact(mObj1, mObj2, 0, -normal, penetration, Vector2.zero, Vector2.zero);
+            contacts.Add(contact);
         }
         else
         {
             penetration = (length - mLength) / 1000.0f;
             Particle2DContact contact = new Particle2DContact(mObj1, mObj2, 0, -normal, penetration, Vector2.zero, Vector2.zero);
+            contacts.Add(contact);
         }
     }
 }
