@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	public Integrator integrator;
-    public List<PhysicsObject2D> physicsObjects;
+	public Integrator mIntegrator;
+    public List<PhysicsObject2D> mPhysicsObjects;
 
     // Start is called before the first frame update
     void Start()
     {
-		integrator = GetComponent<Integrator>();
+		mIntegrator = GetComponent<Integrator>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-		integrator.Integrate(Time.deltaTime);
+		mIntegrator.Integrate(Time.deltaTime);
     }
 
 	//void CheckBounds()

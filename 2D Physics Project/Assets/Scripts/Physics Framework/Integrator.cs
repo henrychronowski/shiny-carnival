@@ -20,7 +20,7 @@ public class Integrator : MonoBehaviour
 
     public void Integrate(double dt)
     {
-        foreach(PhysicsObject2D obj in gameManager.physicsObjects)
+        foreach(PhysicsObject2D obj in gameManager.mPhysicsObjects)
         {
             obj.Integrate(dt);
         }
