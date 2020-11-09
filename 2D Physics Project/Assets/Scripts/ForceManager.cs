@@ -33,11 +33,11 @@ public class ForceManager : MonoBehaviour
         mForceGenerators.Remove(forceGenerator);
     }
 
-    public void UpdateForceGenerators(double dt)
+    public void UpdateForceGenerators()
     {
         foreach(ForceGenerator2D generator in mForceGenerators)
         {
-            generator.UpdateForce(dt);
+            generator.UpdateForce();
         }
     }
 }

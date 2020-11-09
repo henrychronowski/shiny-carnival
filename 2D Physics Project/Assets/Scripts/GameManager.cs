@@ -31,11 +31,11 @@ public class GameManager : MonoBehaviour
 		Scene scene = SceneManager.GetActiveScene();
 		scene.GetRootGameObjects(rootObjects);
 
-		foreach ( GameObject elemnt in rootObjects)
+		foreach ( GameObject element in rootObjects)
 		{
-			if (elemnt.transform.position.x < topLeft.x || elemnt.transform.position.x > bottomRight.x ||
-				elemnt.transform.position.y > topLeft.y || elemnt.transform.position.y < bottomRight.y)
-				Destroy(elemnt);
+			if (element.transform.position.x < topLeft.x || element.transform.position.x > bottomRight.x ||
+				element.transform.position.y > topLeft.y || element.transform.position.y < bottomRight.y)
+				Destroy(element);
 		}
 	}
 }

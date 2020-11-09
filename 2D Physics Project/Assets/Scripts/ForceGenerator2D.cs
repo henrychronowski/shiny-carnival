@@ -50,3 +50,17 @@ public class SpringForceGenerator : ForceGenerator2D
         mObj2.AddForce(-diff);
     }
 }
+
+public class BouyancyForceGenerator : ForceGenerator2D
+{
+    PhysicsObject2D mObj;
+    float mMaxDepth;
+    float mVolume;
+    float mWaterHeight;
+    float mDensity;
+
+    public BouyancyForceGenerator(bool effectAll, PhysicsObject2D obj, float depth, float volume, float waterHeight, float density = 0.5f) : base(effectAll)
+    {
+
+    }
+}

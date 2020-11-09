@@ -197,7 +197,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436075965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.97, y: 0.03, z: -1.8652344}
+  m_LocalPosition: {x: -7.97, y: 0.03, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2035422007}
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c596f27ca5bc04d865953b73c6c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeft: {x: -10, y: 15}
+  topLeft: {x: -10, y: 10}
   bottomRight: {x: 10, y: -6}
   mIntegrator: {fileID: 0}
   mPhysicsObjects: []
@@ -522,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639250756}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
