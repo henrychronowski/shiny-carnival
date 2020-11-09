@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
 
     void CheckInput()
     {
-		float speed = 5;
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             transform.Rotate(0.0f, 0.0f, mRotationRate, Space.World);
@@ -42,9 +40,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
-			Vector2 angle = new Vector2(mProjectileSpawnLoc.position.x - transform.position.x, mProjectileSpawnLoc.position.y - transform.position.y);
-            PhysicsObject2D proj = Instantiate(mProjectilePrefab, mProjectileSpawnLoc.position, mProjectileSpawnLoc.rotation).GetComponent<PhysicsObject2D>();
-			proj.SetVel(angle * speed);
+            FireWeapon();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -54,5 +50,22 @@ public class Player : MonoBehaviour
 
             mCurrentWeaponType = (WeaponType)current;
         }
+    }
+
+    void FireWeapon()
+    {
+        switch (mCurrentWeaponType)
+        {
+            case WeaponType.SPRING:
+                break;
+            case WeaponType.ROD:
+                break;
+        }
+
+
+        float speed = 5;
+        Vector2 angle = new Vector2(mProjectileSpawnLoc.position.x - transform.position.x, mProjectileSpawnLoc.position.y - transform.position.y);
+        PhysicsObject2D proj = Instantiate(mProjectilePrefab, mProjectileSpawnLoc.position, mProjectileSpawnLoc.rotation).GetComponent<PhysicsObject2D>();
+        proj.SetVel(angle * speed);
     }
 }
