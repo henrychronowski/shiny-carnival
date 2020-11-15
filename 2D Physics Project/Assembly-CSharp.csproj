@@ -72,11 +72,13 @@
     <Compile Include="Assets\Scripts\Particle2D.cs" />
     <Compile Include="Assets\Scripts\Particle2DContact.cs" />
     <Compile Include="Assets\Scripts\Particle2DLink.cs" />
+    <Compile Include="Assets\Scripts\Particle2DManager.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Extensions.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Integrator.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Vector2D.cs" />
     <Compile Include="Assets\Scripts\PhysicsObject2D.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\RandomSpawner2D.cs" />
     <Compile Include="Assets\Scripts\TargetScript.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
