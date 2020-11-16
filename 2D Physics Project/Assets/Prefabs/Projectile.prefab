@@ -103,3 +103,4 @@ MonoBehaviour:
   mDampingConstant: 0.999
   mInverseMass: 0
   mShouldIgnoreForces: 0
+  radius: 0.1

@@ -65,7 +65,8 @@ public class PhysicsObject2D : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		GameManager.Instance.mPhysicsObjects.Remove(this);
+		if(GameManager.Instance.mPhysicsObjects != null)
+			GameManager.Instance.mPhysicsObjects.Remove(this);
 	}
 
 	public void AddForce(Vector2 force)

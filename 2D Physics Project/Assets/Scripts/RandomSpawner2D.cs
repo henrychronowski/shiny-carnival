@@ -32,15 +32,18 @@ public class RandomSpawner2D : MonoBehaviour
 	IEnumerator SpawnRandom()
 	{
 		PhysicsObject2D proj;
+		GameObject part;
 
 		while (true)
 		{
-			proj = Instantiate(projectilePrefab, GetRandomPosition(), Quaternion.identity).GetComponent<PhysicsObject2D>();
+			part = Instantiate(projectilePrefab, GetRandomPosition(), Quaternion.identity);
+			proj = part.GetComponent<PhysicsObject2D>();
 			proj.SetVel(new Vector2(0.0f, -1.0f));
 			proj.SetAcc(new Vector2(0.0f, -6.0f));
 			proj.SetInverseMass(1.0f);
 			proj.SetDamping(0.99f);
 			GameManager.Instance.mPhysicsObjects.Add(proj);
+			GameManager.Instance.mParticleManager.AddParticle(part.GetComponent<Particle2D>());
 			proj.gameObject.AddComponent<DestroyOnExit>();
 			yield return new WaitForSeconds(wait);
 		}
@@ -48,8 +51,8 @@ public class RandomSpawner2D : MonoBehaviour
 
 	private Vector3 GetRandomPosition()
 	{
-		return new Vector3(r.Next(topLeft.x, bottomRight.x),
-						   r.Next(bottomRight.y, topLeft.y),
+		return new Vector3(r.Next(topLeft.x, bottomRight.x) - 0.5f,
+						   r.Next(bottomRight.y, topLeft.y) + 0.5f,
 						   0.0f);
 	}
 }

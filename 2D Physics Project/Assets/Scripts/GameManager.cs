@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 	public WeaponType mCurrentWeaponType;
 	public List<Particle2DContact> mContacts;
 	public ContactResolver mResolver;
+	public Particle2DManager mParticleManager;
 
 	public enum WeaponType
     {
@@ -54,13 +55,20 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+		mIntegrator = GetComponent<Integrator>();
+		mForceManager = GetComponent<ForceManager>();
+		mParticleManager = GetComponent<Particle2DManager>();
 	}
 
 	// Start is called before the first frame update
 	void Start()
     {
-		mIntegrator = GetComponent<Integrator>();
-		mForceManager = GetComponent<ForceManager>();
+		if(mIntegrator == null)
+			mIntegrator = GetComponent<Integrator>();
+		if(mForceManager == null)
+			mForceManager = GetComponent<ForceManager>();
+		if(mParticleManager == null)	
+			mParticleManager = GetComponent<Particle2DManager>();
 		mCurrentWeaponType = WeaponType.SPRING;
 
         mContacts = new List<Particle2DContact>();
@@ -113,6 +121,7 @@ public class GameManager : MonoBehaviour
 		Vector2 angle = new Vector2(spawnPoint.position.x - playerPos.position.x, spawnPoint.position.y - playerPos.position.y);
 		Vector2 gravity;
 		PhysicsObject2D proj;
+		GameObject part;
 
         switch (mCurrentWeaponType)
         {
@@ -126,7 +135,9 @@ public class GameManager : MonoBehaviour
 					mass1 = 1.0f;
 					mass2 = 2.0f;
 
-					proj = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+					part = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation);
+					mParticleManager.AddParticle(part.GetComponent<Particle2D>());
+					proj = part.GetComponent<PhysicsObject2D>();
 					proj.SetVel(angle * speed);
 					proj.SetAcc(gravity);
 					proj.SetInverseMass(mass1);
@@ -134,7 +145,9 @@ public class GameManager : MonoBehaviour
 					mPhysicsObjects.Add(proj);
 
 					PhysicsObject2D proj2;
-					proj2 = Instantiate(projectile, spawnPoint.position, spawnPoint.rotation).GetComponent<PhysicsObject2D>();
+					part = Instantiate(projectile, spawnPoint.position - new Vector3(1.0f, 0.0f, 0.0f), spawnPoint.rotation);
+					proj2 = part.GetComponent<PhysicsObject2D>();
+					mParticleManager.AddParticle(part.GetComponent<Particle2D>());
 					proj2.SetVel(angle * speed2);
 					proj2.SetAcc(gravity);
 					proj2.SetInverseMass(mass2);
@@ -207,4 +220,5 @@ public class GameManager : MonoBehaviour
 	{
 
 	}
+
 }
