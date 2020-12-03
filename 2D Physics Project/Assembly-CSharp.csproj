@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Physics Framework\Integrator.cs" />
     <Compile Include="Assets\Scripts\Physics Framework\Vector2D.cs" />
     <Compile Include="Assets\Scripts\PhysicsObject2D.cs" />
+    <Compile Include="Assets\Scripts\PhysicsObject3D.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RandomSpawner2D.cs" />
     <Compile Include="Assets\Scripts\TargetScript.cs" />
