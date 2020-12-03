@@ -10,7 +10,7 @@ public class Integrator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         solarSystemManager = GameObject.FindGameObjectWithTag("SolarSystemManager").GetComponent<SolarSystemManager>();
     }
 

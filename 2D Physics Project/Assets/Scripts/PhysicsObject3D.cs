@@ -31,7 +31,7 @@ public class PhysicsObject3D : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         
     }

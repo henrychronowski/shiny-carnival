@@ -8,6 +8,12 @@ public class SolarSystemManager : MonoBehaviour
     public ForceManager mForceManager;
     public List<PhysicsObject3D> mPhysicsObjects;
 
+    private void Awake()
+    {
+        mIntegrator = GetComponent<Integrator>();
+        mForceManager = GetComponent<ForceManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
