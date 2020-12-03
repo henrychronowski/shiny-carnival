@@ -391,6 +391,7 @@ MonoBehaviour:
   mForceManager: {fileID: 0}
   mPhysicsObjects:
   - {fileID: 603815079}
+  - {fileID: 1465348084}
 --- !u!43 &814603124
 Mesh:
   m_ObjectHideFlags: 0
