@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CelestialBody.cs" />
     <Compile Include="Assets\Scripts\CollisionDetector2D.cs" />
     <Compile Include="Assets\Scripts\Components\DestroyOnExit.cs" />
     <Compile Include="Assets\Scripts\Components\ScoreManager.cs" />
