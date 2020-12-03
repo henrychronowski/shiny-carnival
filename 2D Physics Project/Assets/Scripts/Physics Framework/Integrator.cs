@@ -5,11 +5,13 @@ using UnityEngine;
 public class Integrator : MonoBehaviour
 {
     public GameManager gameManager;
+    public SolarSystemManager solarSystemManager;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        solarSystemManager = GameObject.FindGameObjectWithTag("SolarSystemManager").GetComponent<SolarSystemManager>();
     }
 
     // Update is called once per frame
@@ -20,9 +22,20 @@ public class Integrator : MonoBehaviour
 
     public void Integrate(double dt)
     {
-        foreach(PhysicsObject2D obj in gameManager.mPhysicsObjects)
+        if(gameManager != null)
         {
-            obj.Integrate(dt);
+            foreach (PhysicsObject2D obj in gameManager.mPhysicsObjects)
+            {
+                obj.Integrate(dt);
+            }
+        }
+        
+        if(solarSystemManager != null)
+        {
+            foreach(PhysicsObject3D obj in solarSystemManager.mPhysicsObjects)
+            {
+                obj.Integrate(dt);
+            }
         }
     }
 }
