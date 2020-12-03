@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  solarSystemManager: {fileID: 0}
+  solarSystemManager: {fileID: 732906910}
 --- !u!114 &732906909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +389,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mIntegrator: {fileID: 0}
   mForceManager: {fileID: 0}
-  mPhysicsObjects: []
+  mPhysicsObjects:
+  - {fileID: 603815079}
 --- !u!43 &814603124
 Mesh:
   m_ObjectHideFlags: 0
