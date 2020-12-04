@@ -17,7 +17,12 @@ public class ForceGenerator3D
 
     }
 
-    public bool EffectAll()
+	public virtual void UpdateForce(PhysicsObject3D lhs, PhysicsObject3D rhs)
+	{
+
+	}
+
+	public bool EffectAll()
     {
         return mShouldEffectAll;
     }
@@ -32,9 +37,23 @@ public class GravityForceGenerator : ForceGenerator3D
 		this.G = G;
 	}
 
-	public override void UpdateForce()
+	public override void UpdateForce(PhysicsObject3D lhs, PhysicsObject3D rhs)
 	{
-		base.UpdateForce();
+		if (lhs == rhs)
+			return;
+
+		Vector3 pos1 = lhs.transform.position;
+		Vector3 pos2 = rhs.transform.position;
+
+		Vector3 diff = pos1 - pos2;
+		float dist = diff.magnitude;
+
+		float magnitude = (float)(G * lhs.GetMass() * rhs.GetMass()) / (dist * dist);
+
+		diff.Normalize();
+		diff *= magnitude;
+		lhs.AddForce(diff);
+		rhs.AddForce(-diff);
 	}
 }
 

@@ -58,4 +58,14 @@ public class PhysicsObject3D : MonoBehaviour
 
         ClearAccumulatedForces();
     }
+
+	public void AddForce(Vector3 force)
+	{
+		mAccumulatedForces += force;
+	}
+
+	public double GetMass()
+	{
+		return 1 / (double)mInverseMass;
+	}
 }
