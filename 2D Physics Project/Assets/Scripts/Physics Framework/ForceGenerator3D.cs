@@ -17,11 +17,6 @@ public class ForceGenerator3D
 
     }
 
-	public virtual void UpdateForce(PhysicsObject3D lhs, PhysicsObject3D rhs)
-	{
-
-	}
-
 	public bool EffectAll()
     {
         return mShouldEffectAll;
@@ -31,29 +26,43 @@ public class ForceGenerator3D
 public class GravityForceGenerator : ForceGenerator3D
 {
 	double G;
+	List<PhysicsObject3D> PhysicsObject3Ds;
 
-	GravityForceGenerator(bool effectAll, double G = 0.000000000066743) : base(effectAll)
+	GravityForceGenerator(bool effectAll, in List<PhysicsObject3D> PhysicsObject3Ds, double G = 0.000000000066743) : base(effectAll)
 	{
+		this.PhysicsObject3Ds = PhysicsObject3Ds;
 		this.G = G;
 	}
 
-	public override void UpdateForce(PhysicsObject3D lhs, PhysicsObject3D rhs)
+	public override void UpdateForce()
 	{
-		if (lhs == rhs)
-			return;
+		int i, j;
+		PhysicsObject3D lhs, rhs;
 
-		Vector3 pos1 = lhs.transform.position;
-		Vector3 pos2 = rhs.transform.position;
+		for(i = 0; i < PhysicsObject3Ds.Count; i++)
+		{
+			lhs = PhysicsObject3Ds[i];
+			for(j = i+1; j < PhysicsObject3Ds.Count; j++)
+			{
+				rhs = PhysicsObject3Ds[j];
 
-		Vector3 diff = pos1 - pos2;
-		float dist = diff.magnitude;
+				if (lhs == null || rhs == null || lhs == rhs)
+					break;
 
-		float magnitude = (float)(G * lhs.GetMass() * rhs.GetMass()) / (dist * dist);
+				Vector3 pos1 = lhs.transform.position;
+				Vector3 pos2 = rhs.transform.position;
 
-		diff.Normalize();
-		diff *= magnitude;
-		lhs.AddForce(diff);
-		rhs.AddForce(-diff);
+				Vector3 diff = pos1 - pos2;
+				float dist = diff.magnitude;
+
+				float magnitude = (float)(G * lhs.GetMass() * rhs.GetMass()) / (dist * dist);
+
+				diff.Normalize();
+				diff *= magnitude;
+				lhs.AddForce(diff);
+				rhs.AddForce(-diff);
+			}
+		}
 	}
 }
 
