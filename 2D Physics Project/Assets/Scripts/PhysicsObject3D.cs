@@ -24,6 +24,11 @@ public class PhysicsObject3D : MonoBehaviour
     [SerializeField]
     protected bool mShouldIgnoreForces;
 
+    private void Awake()
+    {
+        mPos = transform.position;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +38,7 @@ public class PhysicsObject3D : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        
+        transform.SetPositionAndRotation(mPos, Quaternion.Euler(0.0f, 0.0f, 0.0f));
     }
 
     void ClearAccumulatedForces()

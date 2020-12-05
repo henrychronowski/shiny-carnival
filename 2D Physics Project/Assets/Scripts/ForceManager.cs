@@ -5,6 +5,7 @@ using UnityEngine;
 public class ForceManager : MonoBehaviour
 {
     public List<ForceGenerator2D> mForceGenerators;
+    public List<ForceGenerator3D> mForceGenerator3Ds;
 
     private void Awake()
     {
@@ -37,6 +38,13 @@ public class ForceManager : MonoBehaviour
     public void UpdateForceGenerators()
     {
         foreach(ForceGenerator2D generator in mForceGenerators)
+        {
+            if (generator.EffectAll())
+            {
+                generator.UpdateForce();
+            }
+        }
+        foreach (ForceGenerator3D generator in mForceGenerator3Ds)
         {
             if (generator.EffectAll())
             {

@@ -8,6 +8,8 @@ public class SolarSystemManager : MonoBehaviour
     public ForceManager mForceManager;
     public List<PhysicsObject3D> mPhysicsObjects;
 
+    private GravityForceGenerator gravityForceGenerator;
+
     private void Awake()
     {
         mIntegrator = GetComponent<Integrator>();
@@ -17,13 +19,14 @@ public class SolarSystemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gravityForceGenerator = new GravityForceGenerator(true, mPhysicsObjects);
     }
 
     // Update is called once per frame
     void Update()
     {
-        mForceManager.UpdateForceGenerators();
+        //mForceManager.UpdateForceGenerators();
+        gravityForceGenerator.UpdateForce();
         mIntegrator.Integrate(Time.deltaTime);
     }
 }

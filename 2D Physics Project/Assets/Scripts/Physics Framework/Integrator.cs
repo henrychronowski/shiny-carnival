@@ -7,6 +7,9 @@ public class Integrator : MonoBehaviour
     public GameManager gameManager;
     public SolarSystemManager solarSystemManager;
 
+    [SerializeField]
+    private double scale = 1.0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +37,7 @@ public class Integrator : MonoBehaviour
         {
             foreach(PhysicsObject3D obj in solarSystemManager.mPhysicsObjects)
             {
-                obj.Integrate(dt);
+                obj.Integrate(dt * scale);
             }
         }
     }

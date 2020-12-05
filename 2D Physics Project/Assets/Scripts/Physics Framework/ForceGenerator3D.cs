@@ -28,7 +28,7 @@ public class GravityForceGenerator : ForceGenerator3D
 	double G;
 	List<PhysicsObject3D> PhysicsObject3Ds;
 
-	GravityForceGenerator(bool effectAll, in List<PhysicsObject3D> PhysicsObject3Ds, double G = 0.000000000066743) : base(effectAll)
+	public GravityForceGenerator(bool effectAll, in List<PhysicsObject3D> PhysicsObject3Ds, double G = 0.000000000066743) : base(effectAll)
 	{
 		this.PhysicsObject3Ds = PhysicsObject3Ds;
 		this.G = G;
@@ -59,8 +59,8 @@ public class GravityForceGenerator : ForceGenerator3D
 
 				diff.Normalize();
 				diff *= magnitude;
-				lhs.AddForce(diff);
-				rhs.AddForce(-diff);
+				lhs.AddForce(-diff);
+				rhs.AddForce(diff);
 			}
 		}
 	}
