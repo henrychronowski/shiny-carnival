@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Components\DestroyOnExit.cs" />
     <Compile Include="Assets\Scripts\Components\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\ContactResolver.cs" />
+    <Compile Include="Assets\Scripts\FOVController.cs" />
     <Compile Include="Assets\Scripts\ForceGenerator2D.cs" />
     <Compile Include="Assets\Scripts\ForceManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
