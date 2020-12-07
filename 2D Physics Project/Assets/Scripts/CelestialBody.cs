@@ -25,4 +25,6 @@ public class CelestialBody : PhysicsObject3D
     {
         return radius;
     }
+
+    //Add getters and setters for max/min camera distance
 }

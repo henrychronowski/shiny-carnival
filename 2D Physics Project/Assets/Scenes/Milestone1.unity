@@ -1065,9 +1065,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  cameraFocus: {fileID: 603815078}
   minFOV: 30
   maxFOV: 150
   increment: 10
+  maxDistance: 600
+  minDistance: 200
 --- !u!1 &1893721491
 GameObject:
   m_ObjectHideFlags: 0
