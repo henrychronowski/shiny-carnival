@@ -21,23 +21,29 @@ public class FOVController : MonoBehaviour
 
     private float cameraDistance;
     private Vector3 startPos;
+    private Vector3 startRotation;
+    private SolarSystemManager systemManager;
+    private int focusIndex;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        startPos = mainCamera.transform.position;
+        startPos = transform.position;
+        startRotation = mainCamera.transform.localRotation.eulerAngles;
         cameraDistance = (mainCamera.transform.position - cameraFocus.transform.position).magnitude;
+        systemManager = GameObject.FindGameObjectWithTag("SolarSystemManager").GetComponent<SolarSystemManager>();
+
+        focusIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        mainCamera.transform.LookAt(cameraFocus);
+        if (cameraFocus.gameObject.tag != "Sun")
+            mainCamera.transform.LookAt(cameraFocus);
         Vector3 distance = mainCamera.transform.position - cameraFocus.transform.position;
         float threshold = distance.magnitude - cameraDistance;
-
-        Debug.Log(threshold);
 
         if(distance.magnitude > maxDistance)
         {
@@ -68,12 +74,25 @@ public class FOVController : MonoBehaviour
             Vector3 direction = mainCamera.transform.forward;
             mainCamera.transform.position -= direction * increment;
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject planet = systemManager.mPhysicsObjects[focusIndex].gameObject;
+            FocusOnPlanet(planet);
+        }
     }
 
     public void FocusOnPlanet(GameObject planet)
     {
-        //if planet == sun
-        //mainCamera.transform.position = startPos
-        //cameraFocus -> planet
+        if(planet.tag == "Sun")
+        {
+            mainCamera.transform.position = startPos;
+            transform.localEulerAngles = startRotation;
+        }
+        cameraFocus = planet.transform;
+        mainCamera.transform.LookAt(cameraFocus);
+
+        focusIndex++;
+        if (focusIndex > systemManager.mPhysicsObjects.Count - 1)
+            focusIndex = 0;
     }
 }
