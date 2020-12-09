@@ -6,7 +6,7 @@ public class SolarSystemManager : MonoBehaviour
 {
     public Integrator mIntegrator;
     public ForceManager mForceManager;
-    public List<PhysicsObject3D> mPhysicsObjects;
+    public List<CelestialBody> mPhysicsObjects;
 
     private GravityForceGenerator gravityForceGenerator;
 

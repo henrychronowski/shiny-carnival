@@ -14,15 +14,15 @@ public class FOVController : MonoBehaviour
     private float maxFOV = 150.0f;
     [SerializeField]
     private float increment = 10.0f;
-    [SerializeField]
-    private float maxDistance;
-    [SerializeField]
-    private float minDistance;
 
+    private float maxDistance;
+    private float minDistance;
     private float cameraDistance;
+
     private Vector3 startPos;
     private Vector3 startRotation;
     private SolarSystemManager systemManager;
+
     private int focusIndex;
 
     // Start is called before the first frame update
@@ -35,6 +35,8 @@ public class FOVController : MonoBehaviour
         systemManager = GameObject.FindGameObjectWithTag("SolarSystemManager").GetComponent<SolarSystemManager>();
 
         focusIndex = 0;
+        minDistance = systemManager.mPhysicsObjects[focusIndex].minCameraZoom;
+        maxDistance = systemManager.mPhysicsObjects[focusIndex].maxCameraZoom;
     }
 
     // Update is called once per frame
@@ -90,6 +92,9 @@ public class FOVController : MonoBehaviour
         }
         cameraFocus = planet.transform;
         mainCamera.transform.LookAt(cameraFocus);
+
+        minDistance = systemManager.mPhysicsObjects[focusIndex].minCameraZoom;
+        maxDistance = systemManager.mPhysicsObjects[focusIndex].maxCameraZoom;
 
         focusIndex++;
         if (focusIndex > systemManager.mPhysicsObjects.Count - 1)

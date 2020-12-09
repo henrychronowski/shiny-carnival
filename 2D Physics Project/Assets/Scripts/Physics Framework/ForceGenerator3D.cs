@@ -26,9 +26,9 @@ public class ForceGenerator3D
 public class GravityForceGenerator : ForceGenerator3D
 {
 	double G;
-	List<PhysicsObject3D> PhysicsObject3Ds;
+	List<CelestialBody> PhysicsObject3Ds;
 
-	public GravityForceGenerator(bool effectAll, in List<PhysicsObject3D> PhysicsObject3Ds, double G = 0.000000000066743) : base(effectAll)
+	public GravityForceGenerator(bool effectAll, in List<CelestialBody> PhysicsObject3Ds, double G = 0.000000000066743) : base(effectAll)
 	{
 		this.PhysicsObject3Ds = PhysicsObject3Ds;
 		this.G = G;

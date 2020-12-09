@@ -7,6 +7,22 @@ public class CelestialBody : PhysicsObject3D
 {
     [SerializeField]
     private float radius = 1;
+    [SerializeField]
+    private float cameraZoomMin = 0;
+    [SerializeField]
+    private float cameraZoomMax = 0;
+
+    public float minCameraZoom
+    {
+        get { return cameraZoomMin; }
+        set { cameraZoomMin = value; }
+    }
+
+    public float maxCameraZoom
+    {
+        get { return cameraZoomMax; }
+        set { cameraZoomMax = value; }
+    }
 
     // Start is called before the first frame update
     void Start()

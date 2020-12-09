@@ -254,6 +254,8 @@ MonoBehaviour:
   mInverseMass: 0.000001
   mShouldIgnoreForces: 0
   radius: 5
+  cameraZoomMin: 100
+  cameraZoomMax: 200
 --- !u!23 &370659805
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -418,6 +420,8 @@ MonoBehaviour:
   mInverseMass: 1e-15
   mShouldIgnoreForces: 0
   radius: 45
+  cameraZoomMin: 200
+  cameraZoomMax: 600
 --- !u!1 &732906906
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +706,8 @@ MonoBehaviour:
   mInverseMass: 0.000001
   mShouldIgnoreForces: 0
   radius: 5
+  cameraZoomMin: 100
+  cameraZoomMax: 200
 --- !u!23 &1465348085
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -804,6 +810,8 @@ MonoBehaviour:
   mInverseMass: 0.000001
   mShouldIgnoreForces: 0
   radius: 5
+  cameraZoomMin: 100
+  cameraZoomMax: 200
 --- !u!23 &1534273823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -966,8 +974,6 @@ MonoBehaviour:
   minFOV: 30
   maxFOV: 150
   increment: 10
-  maxDistance: 600
-  minDistance: 200
 --- !u!1 &1893721491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1015,8 @@ MonoBehaviour:
   mInverseMass: 0.000001
   mShouldIgnoreForces: 0
   radius: 5
+  cameraZoomMin: 100
+  cameraZoomMax: 200
 --- !u!23 &1893721493
 MeshRenderer:
   m_ObjectHideFlags: 0
