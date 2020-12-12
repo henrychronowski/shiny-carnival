@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class CelestialBody : PhysicsObject3D
@@ -11,6 +12,9 @@ public class CelestialBody : PhysicsObject3D
     private float cameraZoomMin = 0;
     [SerializeField]
     private float cameraZoomMax = 0;
+
+    [SerializeField]
+    private Billboard billboard;
 
     public float minCameraZoom
     {
@@ -42,5 +46,9 @@ public class CelestialBody : PhysicsObject3D
         return radius;
     }
 
-    //Add getters and setters for max/min camera distance
+    public void SetActiveUI(bool active)
+    {
+        billboard.gameObject.SetActive(active);
+        billboard.isActive = active;
+    }
 }

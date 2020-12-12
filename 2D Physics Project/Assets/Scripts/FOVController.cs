@@ -23,6 +23,7 @@ public class FOVController : MonoBehaviour
     private Vector3 startRotation;
     private SolarSystemManager systemManager;
 
+    [SerializeField]
     private int focusIndex;
 
     // Start is called before the first frame update
@@ -37,6 +38,8 @@ public class FOVController : MonoBehaviour
         focusIndex = 0;
         minDistance = systemManager.mPhysicsObjects[focusIndex].minCameraZoom;
         maxDistance = systemManager.mPhysicsObjects[focusIndex].maxCameraZoom;
+
+        FocusOnPlanet(systemManager.mPhysicsObjects[focusIndex].gameObject);
     }
 
     // Update is called once per frame
@@ -79,6 +82,12 @@ public class FOVController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject planet = systemManager.mPhysicsObjects[focusIndex].gameObject;
+            planet.GetComponent<CelestialBody>().SetActiveUI(false);
+
+            focusIndex++;
+            if (focusIndex > systemManager.mPhysicsObjects.Count - 1)
+                focusIndex = 0;
+            planet = systemManager.mPhysicsObjects[focusIndex].gameObject;
             FocusOnPlanet(planet);
         }
     }
@@ -95,9 +104,6 @@ public class FOVController : MonoBehaviour
 
         minDistance = systemManager.mPhysicsObjects[focusIndex].minCameraZoom;
         maxDistance = systemManager.mPhysicsObjects[focusIndex].maxCameraZoom;
-
-        focusIndex++;
-        if (focusIndex > systemManager.mPhysicsObjects.Count - 1)
-            focusIndex = 0;
+        planet.GetComponent<CelestialBody>().SetActiveUI(true);
     }
 }
