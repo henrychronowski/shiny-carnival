@@ -50,5 +50,7 @@ public class CelestialBody : PhysicsObject3D
     {
         billboard.gameObject.SetActive(active);
         billboard.isActive = active;
+        billboard.planetName.gameObject.SetActive(active);
+        billboard.planetName.text = gameObject.name;
     }
 }
