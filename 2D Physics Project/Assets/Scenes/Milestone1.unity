@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 370659805}
   - component: {fileID: 370659804}
   m_Layer: 0
-  m_Name: Sphere (4)
+  m_Name: Planet 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 522785612}
   - component: {fileID: 522785611}
   m_Layer: 0
-  m_Name: mun
+  m_Name: Moon - Planet 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 1465348085}
   - component: {fileID: 1465348084}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Planet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2201,7 +2201,7 @@ GameObject:
   - component: {fileID: 1534273823}
   - component: {fileID: 1534273822}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: Planet 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2599,7 +2599,7 @@ GameObject:
   - component: {fileID: 1893721493}
   - component: {fileID: 1893721492}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: Planet 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
