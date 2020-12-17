@@ -1,0 +1,5 @@
+Scroll Wheel - Zoom in/out
+
+Spacebar - Focus camera on next planet
+
+Alt + f4 - Quit Program
